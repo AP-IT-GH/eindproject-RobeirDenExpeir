@@ -13,7 +13,7 @@ public class RaceArea : MonoBehaviour
     {
         Checkpoints = GetComponentsInChildren<Checkpoint>().ToList();
         Debug.Log($"Found {Checkpoints.Count} checkpoints");
-        Checkpoints.Sort((a, b) => a.CheckpointNumber.CompareTo(b.CheckpointNumber));
+        Checkpoints.Sort((a, b) => a.checkpointNumber.CompareTo(b.checkpointNumber));
         Checkpoints[0].SetVisible(true);
     }
     
