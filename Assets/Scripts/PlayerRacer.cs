@@ -2,25 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRacer : MonoBehaviour
+public class PlayerRacer : AgentRacer
 {
-    public int NextCheckpointIndex { get; set; }
-    private RaceArea _raceArea;
-    private TriggerEnterStrategy _triggerEnterStrategy;
     
-    public void Awake()
+    public override void Awake()
     {
-        _raceArea = FindObjectOfType<RaceArea>();
-        _triggerEnterStrategy = new RacerTriggerEnterStrategy();
+        base.Awake();
+        _triggerEnterStrategy = new PlayerTriggerEnterStrategy();
+        Debug.Log(_triggerEnterStrategy.ToString());
     }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, _raceArea, NextCheckpointIndex);
-
-    }
-    
-    
 
 
 }
