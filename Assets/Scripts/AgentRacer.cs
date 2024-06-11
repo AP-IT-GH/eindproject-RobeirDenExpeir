@@ -6,19 +6,19 @@ using UnityEngine;
 public class AgentRacer : Agent
 {
     public int NextCheckpointIndex { get; set; }
-    private RaceArea _raceArea;
-    private TriggerEnterStrategy _triggerEnterStrategy;
-    public void Awake()
+    private RaceArea raceArea;
+    protected TriggerEnterStrategy _triggerEnterStrategy;
+    
+    public bool IsPlayer { get; set; }
+    public float Position { get; set; }
+    public virtual void Awake()
     {
-        _raceArea = FindObjectOfType<RaceArea>();
-        _triggerEnterStrategy = new RacerTriggerEnterStrategy();
-        
-        
+        raceArea = FindObjectOfType<RaceArea>();
+        _triggerEnterStrategy = new RacerTriggerEnterStrategy(); // Replace with AgentTriggerEnterStrategy?
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, _raceArea, NextCheckpointIndex);
-
+        NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, raceArea, NextCheckpointIndex);
     }
 }

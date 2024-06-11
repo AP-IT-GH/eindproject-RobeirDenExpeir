@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public int CheckpointNumber;
+    public int checkpointNumber;
 
     private void Awake()
     {
