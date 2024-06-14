@@ -12,6 +12,9 @@ public class PlaneController : MonoBehaviour
     public TMP_Text speedometerText;           // Reference to the UI Text element
     public Image boostBarFill;                 // Reference to the boost bar fill image
 
+    public GameObject boostBarFull;            // Reference to the BoostBarFull GameObject
+    public GameObject boostBarEmpty;           // Reference to the BoostBarEmpty GameObject
+
     private Rigidbody rb;
     private bool isBoosting = false;
     private float boostDuration = 3f;
@@ -99,6 +102,21 @@ public class PlaneController : MonoBehaviour
             else
             {
                 boostBarFill.fillAmount = 1.0f;
+            }
+        }
+
+        // Update boost bar visibility
+        if (boostBarFull != null && boostBarEmpty != null)
+        {
+            if (cooldownTimer <= 0f)
+            {
+                boostBarFull.SetActive(true);
+                boostBarEmpty.SetActive(false);
+            }
+            else
+            {
+                boostBarFull.SetActive(false);
+                boostBarEmpty.SetActive(true);
             }
         }
     }
