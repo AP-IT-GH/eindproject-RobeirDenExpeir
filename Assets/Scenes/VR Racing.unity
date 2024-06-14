@@ -259,6 +259,7 @@ MonoBehaviour:
   rotationSpeed: 100
   liftForce: 10
   speedometerText: {fileID: 564652208}
+  boostBarFill: {fileID: 0}
 --- !u!1 &234501124
 GameObject:
   m_ObjectHideFlags: 0
