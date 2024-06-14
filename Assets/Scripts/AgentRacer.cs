@@ -8,26 +8,26 @@ public class AgentRacer : Agent
     public int NextCheckpointIndex { get; private set; }
     private RaceArea raceArea;
     protected TriggerEnterStrategy _triggerEnterStrategy;
-    
+
     public bool IsPlayer { get; set; }
     public float Position { get; set; }
 
     protected new Rigidbody rigidbody;
 
     #region Controls
-    
+
     //Regular Controls
     public float speed = 10f;                  // Normal forward speed
     public float boostSpeed = 20f;             // Speed during boost
     public float rotationSpeed = 100f;         // Rotation speed
-    
+
     //Boost
     protected bool isBoosting = false;
     protected float boostDuration = 3f;
     protected float boostCooldown = 5f;
     protected float boostTimer = 0f;
     protected float cooldownTimer = 0f;
-    
+
     #endregion
 
 
@@ -41,16 +41,16 @@ public class AgentRacer : Agent
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.useGravity = false; // Disable gravity to simulate lift more effectively
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, raceArea, NextCheckpointIndex);
         if (other.gameObject == raceArea.Checkpoints[NextCheckpointIndex].gameObject)
         {
-            GotCheckpoint(); 
+            GotCheckpoint();
         }
     }
-    
+
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         // Continuous actions
@@ -88,7 +88,7 @@ public class AgentRacer : Agent
         rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
         raceArea.ResetAgentPosition(agent: this);
-        
+
         boostTimer = 0f;
         cooldownTimer = 0f;
         isBoosting = false;
@@ -128,8 +128,8 @@ public class AgentRacer : Agent
         Debug.Log($"Agent collided with Checkpoint {NextCheckpointIndex}");
         NextCheckpointIndex = (NextCheckpointIndex + 1) % raceArea.Checkpoints.Count;
         AddReward(0.5f);
-        
-        
+
+
     }
     protected void HandleBoosting(float boost)
     {

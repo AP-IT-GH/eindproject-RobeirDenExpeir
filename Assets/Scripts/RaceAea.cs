@@ -42,6 +42,6 @@ public class RaceArea : MonoBehaviour
         var agentTransform = agent.transform;
         agentTransform.position = startPosition; // + positionOffset;
         // agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
-    } 
+    }
 }
 
