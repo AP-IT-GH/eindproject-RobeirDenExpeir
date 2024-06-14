@@ -1,4 +1,0 @@
-repository "AirRacers@owennolis@cloud"
-  path "/"
-    br "/main"
-    co "/main"
