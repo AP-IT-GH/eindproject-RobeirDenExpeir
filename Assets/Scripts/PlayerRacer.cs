@@ -19,7 +19,7 @@ public class PlayerRacer : AgentRacer
         _triggerEnterStrategy = new PlayerTriggerEnterStrategy();
         Debug.Log(_triggerEnterStrategy.ToString());
     }
-    void Update()
+    void FixedUpdate()
     {
         // Get input from arrow keys
         float roll = 0f;
@@ -44,25 +44,8 @@ public class PlayerRacer : AgentRacer
         }
 
         // Handle boost logic
-        if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0f)
-        {
-            isBoosting = true;
-            boostTimer = boostDuration;
-        }
-
-        if (isBoosting)
-        {
-            boostTimer -= Time.deltaTime;
-            if (boostTimer <= 0f)
-            {
-                isBoosting = false;
-                cooldownTimer = boostCooldown;
-            }
-        }
-        else if (cooldownTimer > 0f)
-        {
-            cooldownTimer -= Time.deltaTime;
-        }
+        float boost = Input.GetKey(KeyCode.Space) ? 1f : 0f;
+        HandleBoosting(boost);
 
         // Determine current speed
         float currentSpeed = isBoosting ? boostSpeed : speed;
@@ -75,41 +58,7 @@ public class PlayerRacer : AgentRacer
         // Apply constant forward movement
         Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
         rigidbody.MovePosition(rigidbody.position + forwardMovement);
-
-        // Apply lift force to keep the plane in the air
-        Vector3 lift = transform.up * liftForce * Time.deltaTime;
-        rigidbody.AddForce(lift, ForceMode.Acceleration);
-
-        // // Update speedometer text
-        // speedometerText.text = $"Speed: {currentSpeed:F1} units/sec";
-        //
-        // // Update boost bar fill amount
-        // if (boostBarFill != null)
-        // {
-        //     if (cooldownTimer > 0f)
-        //     {
-        //         boostBarFill.fillAmount = 1.0f - (cooldownTimer / boostCooldown);
-        //     }
-        //     else
-        //     {
-        //         boostBarFill.fillAmount = 1.0f;
-        //     }
-        // }
-        //
-        // // Update boost bar visibility
-        // if (boostBarFull != null && boostBarEmpty != null)
-        // {
-        //     if (cooldownTimer <= 0f)
-        //     {
-        //         boostBarFull.SetActive(true);
-        //         boostBarEmpty.SetActive(false);
-        //     }
-        //     else
-        //     {
-        //         boostBarFull.SetActive(false);
-        //         boostBarEmpty.SetActive(true);
-        //     }
-        // }
+        
     }
 
 
