@@ -41,7 +41,7 @@ public class RaceArea : MonoBehaviour
         // Set the aircraft position and rotation
         var agentTransform = agent.transform;
         agentTransform.position = startPosition; // + positionOffset;
-        agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
+        // agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
     } 
 }
 
