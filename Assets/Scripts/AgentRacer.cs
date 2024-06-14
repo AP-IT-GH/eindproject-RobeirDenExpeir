@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -7,14 +5,31 @@ using UnityEngine;
 
 public class AgentRacer : Agent
 {
-    public int NextCheckpointIndex { get; set; }
+    public int NextCheckpointIndex { get; private set; }
     private RaceArea raceArea;
     protected TriggerEnterStrategy _triggerEnterStrategy;
     
     public bool IsPlayer { get; set; }
     public float Position { get; set; }
 
-    private new Rigidbody rigidbody;
+    protected new Rigidbody rigidbody;
+
+    #region Controls
+    
+    //Regular Controls
+    public float speed = 10f;                  // Normal forward speed
+    public float boostSpeed = 20f;             // Speed during boost
+    public float rotationSpeed = 100f;         // Rotation speed
+    public float liftForce = 10f;              // Lift force to keep the plane in the air
+    
+    //Boost
+    protected bool isBoosting = false;
+    protected float boostDuration = 3f;
+    protected float boostCooldown = 5f;
+    protected float boostTimer = 0f;
+    protected float cooldownTimer = 0f;
+    
+    #endregion
 
 
     public virtual void Awake()
@@ -23,18 +38,33 @@ public class AgentRacer : Agent
         _triggerEnterStrategy = new RacerTriggerEnterStrategy(); // Replace with AgentTriggerEnterStrategy?
     }
     
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+        rigidbody.useGravity = false; // Disable gravity to simulate lift more effectively
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, raceArea, NextCheckpointIndex);
-        if (other.gameObject == raceArea.Checkpoints[NextCheckpointIndex])
+        if (other.gameObject == raceArea.Checkpoints[NextCheckpointIndex].gameObject)
         {
             GotCheckpoint(); 
         }
     }
-
-public override void Initialize()
+    
+    public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        raceArea = GetComponentInParent<RaceArea>();
+        float forwardAmount = actionBuffers.ContinuousActions[0];
+        float turnAmount = actionBuffers.ContinuousActions[1];
+        rigidbody.AddForce(transform.forward * forwardAmount * 10f, ForceMode.VelocityChange);
+        transform.Rotate(transform.up, turnAmount * 4f);
+        AddReward(-0.0005f);
+    }
+
+    public override void Initialize()
+    {
+        raceArea = FindObjectOfType<RaceArea>();
         rigidbody = GetComponent<Rigidbody>();
     }
 

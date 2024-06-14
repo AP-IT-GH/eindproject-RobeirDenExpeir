@@ -39,8 +39,9 @@ public class RaceArea : MonoBehaviour
             * UnityEngine.Random.Range(9f, 10f);
 
         // Set the aircraft position and rotation
-        agent.transform.position = startPosition + positionOffset;
-        agent.transform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
+        var agentTransform = agent.transform;
+        agentTransform.position = startPosition; // + positionOffset;
+        agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
     } 
 }
 

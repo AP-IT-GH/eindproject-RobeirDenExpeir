@@ -46,29 +46,6 @@ public class RaceManager : MonoBehaviour
     {
         yield return _countdownUIController.StartCountdown();
     }
-
-    private void Update()
-    {
-        UpdateRacerPositions();
-        UpdatePlayerPosition();
-    }
-
-    private void UpdateRacerPositions()
-    {
-        // Sort racers by their progress (you need to define how to measure progress)
-        Racers.Sort((racer1, racer2) => racer2.Position.CompareTo(racer1.Position));
-    }
-
-    private void UpdatePlayerPosition()
-    {
-        // Find player's position
-        for (int i = 0; i < Racers.Count; i++)
-        {
-            if (Racers[i].IsPlayer)
-            {
-                PlayerPosition = i + 1;
-                break;
-            }
-        }
-    }
+    
+    
 }
