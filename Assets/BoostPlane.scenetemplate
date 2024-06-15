@@ -10,39 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Air Racers Scene
+  m_Name: BoostPlane
   m_EditorClassIdentifier: 
-  templateScene: {fileID: 102900000, guid: db41bc767a19947418537769e888c62f, type: 3}
+  templateScene: {fileID: 102900000, guid: 10a777f3ca5a449518b6b05c3acea7cd, type: 3}
   templateName: 
   description: 
   preview: {fileID: 0}
   dependencies:
   - dependency: {fileID: 2100000, guid: a4607495735d9424eabdc5d80c29d1ab, type: 2}
     instantiationMode: 0
-  - dependency: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - dependency: {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     instantiationMode: 1
-  - dependency: {fileID: -944628639613478452, guid: 3c6dfc33d308b4f9b870129193b671ba, type: 3}
-    instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: 40265a896a0f341bb956e90c59025a29, type: 3}
-    instantiationMode: 1
   - dependency: {fileID: 919132149155446097, guid: de44d52fe43c94e01bff1b73bb2a6550, type: 3}
-    instantiationMode: 0
-  - dependency: {fileID: 2800000, guid: 8f0458a787ee3406d9432c2710aea9c5, type: 3}
-    instantiationMode: 0
-  - dependency: {fileID: 2800000, guid: 7b8bfaee8f8631c4789ac62373cbc2d4, type: 3}
-    instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: 63a6992ce0688634facc08148923a130, type: 3}
-    instantiationMode: 0
-  - dependency: {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
-    instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: 1b0d395c129acb7498aaa1bc58da2008, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 8f0458a787ee3406d9432c2710aea9c5, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
