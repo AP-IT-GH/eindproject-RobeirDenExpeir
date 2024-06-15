@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1718470565",
+        "python_version": "3.9.18 (main, Sep 11 2023, 08:38:23) \n[Clang 14.0.6 ]",
+        "command_line_arguments": "/opt/anaconda3/envs/ml-agents/bin/mlagents-learn config/AirRacers.yaml --run-id=AirRacers",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.11.0",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1718470609"
+    },
+    "total": 44.174141755,
+    "count": 1,
+    "self": 0.0123756030000024,
+    "children": {
+        "run_training.setup": {
+            "total": 0.033869745000000506,
+            "count": 1,
+            "self": 0.033869745000000506
+        },
+        "TrainerController.start_learning": {
+            "total": 44.127896406999994,
+            "count": 1,
+            "self": 0.0011659549999976093,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 44.126670061,
+                    "count": 1,
+                    "self": 44.126670061
+                },
+                "trainer_threads": {
+                    "total": 1.6700000031732998e-06,
+                    "count": 1,
+                    "self": 1.6700000031732998e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 5.87209999949323e-05,
+                    "count": 1,
+                    "self": 5.87209999949323e-05
+                }
+            }
+        }
+    }
+}

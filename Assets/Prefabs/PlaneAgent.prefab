@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SensorName: RaysUp
+  m_SensorName: RaysDown
   m_DetectableTags:
   - Untagged
   - checkpoint
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: AirplaneLearning
+  m_BehaviorName: AirRacers
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -385,5 +385,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   speed: 10
+  yawSpeed: 100
+  rollSpeed: 100
+  pitchSpeed: 100
   boostSpeed: 20
-  rotationSpeed: 100
