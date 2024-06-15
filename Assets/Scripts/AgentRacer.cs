@@ -1,3 +1,4 @@
+using System;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -8,9 +9,6 @@ public class AgentRacer : Agent
     public int NextCheckpointIndex { get; private set; }
     protected RaceArea raceArea;
     protected TriggerEnterStrategy _triggerEnterStrategy;
-
-    public bool IsPlayer { get; set; }
-    public float Position { get; set; }
 
     protected new Rigidbody rigidbody;
 
@@ -38,6 +36,13 @@ public class AgentRacer : Agent
         raceArea = FindObjectOfType<RaceArea>();
         _triggerEnterStrategy = new RacerTriggerEnterStrategy(); // Replace with AgentTriggerEnterStrategy?
     }
+
+    public void Reset()
+    {
+        NextCheckpointIndex = 0;
+        isBoosting = false;
+    }
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
