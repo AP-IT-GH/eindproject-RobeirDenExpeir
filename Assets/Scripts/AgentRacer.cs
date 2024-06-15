@@ -26,7 +26,7 @@ public class AgentRacer : Agent
     protected float boostCooldown = 5f;
     protected float boostTimer = 0f;
     protected float cooldownTimer = 0f;
-    
+
     #endregion
 
 
@@ -66,7 +66,7 @@ public class AgentRacer : Agent
         if (other.gameObject.CompareTag("checkpoint"))
         {
             Debug.Log("Reward granted");
-            AddReward(.0f);
+            AddReward(2.0f);
         }
         Debug.Log($"Test index: {NextCheckpointIndex}");
         NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, raceArea, NextCheckpointIndex);
@@ -75,7 +75,7 @@ public class AgentRacer : Agent
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(!collision.gameObject.CompareTag("checkpoint"))
+        if (!collision.gameObject.CompareTag("checkpoint"))
         {
             AddReward(-0.2f);
             EndEpisode();
