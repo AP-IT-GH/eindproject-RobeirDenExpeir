@@ -2,22 +2,22 @@
     "AirRacers": {
         "checkpoints": [
             {
-                "steps": 13995,
-                "file_path": "results/AirRacers/AirRacers/AirRacers-13995.onnx",
+                "steps": 35396,
+                "file_path": "results/AirRacers/AirRacers/AirRacers-35396.onnx",
                 "reward": -0.5,
-                "creation_time": 1718483465.6192,
+                "creation_time": 1718484572.329831,
                 "auxillary_file_paths": [
-                    "results/AirRacers/AirRacers/AirRacers-13995.pt"
+                    "results/AirRacers/AirRacers/AirRacers-35396.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 13995,
+            "steps": 35396,
             "file_path": "results/AirRacers/AirRacers.onnx",
             "reward": -0.5,
-            "creation_time": 1718483465.6192,
+            "creation_time": 1718484572.329831,
             "auxillary_file_paths": [
-                "results/AirRacers/AirRacers/AirRacers-13995.pt"
+                "results/AirRacers/AirRacers/AirRacers-35396.pt"
             ]
         }
     },
