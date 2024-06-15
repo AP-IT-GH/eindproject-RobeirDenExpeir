@@ -12,11 +12,14 @@ public class PlayerRacer : AgentRacer
     //
     // public GameObject boostBarFull;            // Reference to the BoostBarFull GameObject
     // public GameObject boostBarEmpty;           // Reference to the BoostBarEmpty GameObject
-
-    public float yawSpeed = 100f;
-    public float rollSpeed = 100f;
-    public float pitchSpeed = 100f;
-
+    
+    public override void Awake()
+    {
+        base.Awake();
+        _triggerEnterStrategy = new PlayerTriggerEnterStrategy();
+        Debug.Log(_triggerEnterStrategy.ToString());
+    }
+    
     void FixedUpdate()
     {
         if (GameManager.Instance.State == GameState.InGame)
