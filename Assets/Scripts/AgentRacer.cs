@@ -67,7 +67,9 @@ public class AgentRacer : Agent
         // Apply rotation
         float rollRotation = roll * rotationSpeed * Time.deltaTime;
         float pitchRotation = pitch * rotationSpeed * Time.deltaTime;
-        rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(pitchRotation, 0, -rollRotation));
+
+        // Adjust Euler angle order based on your model's orientation
+        rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(-pitchRotation, 0f, -rollRotation));
 
         // Apply constant forward movement
         Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
@@ -153,5 +155,4 @@ public class AgentRacer : Agent
             cooldownTimer -= Time.deltaTime;
         }
     }
-
 }
