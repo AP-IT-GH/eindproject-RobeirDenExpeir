@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Area (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3207705196874096291, guid: ef2ec5b3cbe244e9c9de70a8f816ad5e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3840999742163828400, guid: ef2ec5b3cbe244e9c9de70a8f816ad5e, type: 3}
       propertyPath: startPoint
       value: 
