@@ -9,11 +9,11 @@ public class PlaneController : MonoBehaviour
     public float rotationSpeed = 100f;         // Rotation speed
     public float liftForce = 10f;              // Lift force to keep the plane in the air
 
-    public TMP_Text speedometerText;           // Reference to the UI Text element
-    public Image boostBarFill;                 // Reference to the boost bar fill image
-
-    public GameObject boostBarFull;            // Reference to the BoostBarFull GameObject
-    public GameObject boostBarEmpty;           // Reference to the BoostBarEmpty GameObject
+    // public TMP_Text speedometerText;           // Reference to the UI Text element
+    // public Image boostBarFill;                 // Reference to the boost bar fill image
+    //
+    // public GameObject boostBarFull;            // Reference to the BoostBarFull GameObject
+    // public GameObject boostBarEmpty;           // Reference to the BoostBarEmpty GameObject
 
     private Rigidbody rb;
     private bool isBoosting = false;
@@ -89,35 +89,35 @@ public class PlaneController : MonoBehaviour
         Vector3 lift = transform.up * liftForce * Time.deltaTime;
         rb.AddForce(lift, ForceMode.Acceleration);
 
-        // Update speedometer text
-        speedometerText.text = $"Speed: {currentSpeed:F1} units/sec";
-
-        // Update boost bar fill amount
-        if (boostBarFill != null)
-        {
-            if (cooldownTimer > 0f)
-            {
-                boostBarFill.fillAmount = 1.0f - (cooldownTimer / boostCooldown);
-            }
-            else
-            {
-                boostBarFill.fillAmount = 1.0f;
-            }
-        }
-
-        // Update boost bar visibility
-        if (boostBarFull != null && boostBarEmpty != null)
-        {
-            if (cooldownTimer <= 0f)
-            {
-                boostBarFull.SetActive(true);
-                boostBarEmpty.SetActive(false);
-            }
-            else
-            {
-                boostBarFull.SetActive(false);
-                boostBarEmpty.SetActive(true);
-            }
-        }
+        // // Update speedometer text
+        // speedometerText.text = $"Speed: {currentSpeed:F1} units/sec";
+        //
+        // // Update boost bar fill amount
+        // if (boostBarFill != null)
+        // {
+        //     if (cooldownTimer > 0f)
+        //     {
+        //         boostBarFill.fillAmount = 1.0f - (cooldownTimer / boostCooldown);
+        //     }
+        //     else
+        //     {
+        //         boostBarFill.fillAmount = 1.0f;
+        //     }
+        // }
+        //
+        // // Update boost bar visibility
+        // if (boostBarFull != null && boostBarEmpty != null)
+        // {
+        //     if (cooldownTimer <= 0f)
+        //     {
+        //         boostBarFull.SetActive(true);
+        //         boostBarEmpty.SetActive(false);
+        //     }
+        //     else
+        //     {
+        //         boostBarFull.SetActive(false);
+        //         boostBarEmpty.SetActive(true);
+        //     }
+        // }
     }
 }
