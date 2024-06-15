@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=1ed27a360cf09c247b0e3e23f3d2924e&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:Label tabindex="-1" text="Game Ended" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="header" style="align-self: center;" />
+        <ui:Button text="Start New Game" parse-escape-sequences="true" display-tooltip-when-elided="true" view-data-key="button" name="start-new-button" class="button" />
+        <ui:Button text="Main Menu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="main-menu-button" class="button" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,6 +1,7 @@
 .header {
     font-size: 40px;
     color: rgb(255, 255, 255);
+    align-self: center;
 }
 
 .button {
