@@ -6,7 +6,7 @@ using UnityEngine;
 public class AgentRacer : Agent
 {
     public int NextCheckpointIndex { get; private set; }
-    private RaceArea raceArea;
+    protected RaceArea raceArea;
     protected TriggerEnterStrategy _triggerEnterStrategy;
 
     public bool IsPlayer { get; set; }
@@ -96,7 +96,7 @@ public class AgentRacer : Agent
     {
         rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
-        raceArea.ResetAgentPosition(agent: this);
+        raceArea.SpawnAgent(agent: this);
 
         boostTimer = 0f;
         cooldownTimer = 0f;

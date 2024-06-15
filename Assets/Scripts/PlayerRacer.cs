@@ -47,6 +47,10 @@ public class PlayerRacer : AgentRacer
           {
               pitch = -1f;
           }
+          else if (Input.GetKey(KeyCode.B))
+          {
+              raceArea.ResetAgentPosition(this);
+          }
 
           float boost = Input.GetKey(KeyCode.Space) ? 1f : 0f;
           HandleBoosting(boost);

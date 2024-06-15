@@ -17,10 +17,17 @@ public class RacerTriggerEnterStrategy : TriggerEnterStrategy
     {
         Checkpoint c = other.GetComponentInParent<Checkpoint>();
         Debug.Log($"Collided with: {c.checkpointNumber}");
+        if(c.checkpointNumber == nextCheckpointIndex && nextCheckpointIndex == raceArea.Checkpoints.Count - 1)
+        {
+            //Final checkpoint
+            Debug.Log("Finished the race!");
+            GameManager.Instance.UpdateGameState(GameState.RaceEnd);
+            return nextCheckpointIndex;
+        } 
         if (c.checkpointNumber == nextCheckpointIndex)
         {
             Debug.Log($"Collided with checkpoint: {nextCheckpointIndex} ");
-            nextCheckpointIndex = (nextCheckpointIndex + 1) % raceArea.Checkpoints.Count;
+            nextCheckpointIndex++;
             Debug.Log($"NextCheckpointIndex: {nextCheckpointIndex}, CheckpointNumber: {c.checkpointNumber}, RaceArea.Checkpoints.Count: {raceArea.Checkpoints.Count}");
         }
 
