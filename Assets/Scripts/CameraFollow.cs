@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     public float distance = 10.0f; // Distance from the target
     public float height = 3.0f; // Height offset from the target
     public float positionSmoothTime = 0.3f; // Smoothing time for the position
-    public float rotationSmoothTime = 0.3f; // Smoothing time for the rotation
+    public float rotationSmoothTime = 10f; // Smoothing time for the rotation
 
     private Vector3 positionVelocity = Vector3.zero;
 

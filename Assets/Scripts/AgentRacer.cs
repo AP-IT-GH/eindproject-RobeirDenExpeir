@@ -58,6 +58,12 @@ public class AgentRacer : Agent
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        AddReward(-0.5f);
+        EndEpisode();
+    }
+
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         // Continuous actions
@@ -129,6 +135,54 @@ public class AgentRacer : Agent
         // Total Observations = 3 + 3 + 3 = 9
     }
 
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        var continuousActionsOut = actionsOut.ContinuousActions;
+        var discreteActionsOut = actionsOut.DiscreteActions;
+
+        // Roll: Left/Right arrow keys for roll
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            continuousActionsOut[0] = -1f;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            continuousActionsOut[0] = 1f;
+        }
+        else
+        {
+            continuousActionsOut[0] = 0f;
+        }
+
+        // Pitch: Up/Down arrow keys for pitch
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            continuousActionsOut[1] = 1f;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            continuousActionsOut[1] = -1f;
+        }
+        else
+        {
+            continuousActionsOut[1] = 0f;
+        }
+
+        // Yaw: (Optional, can also be mapped to arrow keys or different keys if needed)
+        // Since yaw isn't explicitly requested, it's set to zero.
+        continuousActionsOut[2] = 0f;
+
+        // Boost: Space key for boost
+        if (Input.GetKey(KeyCode.Space))
+        {
+            discreteActionsOut[0] = 1;
+        }
+        else
+        {
+            discreteActionsOut[0] = 0;
+        }
+    }
+
     private Vector3 VectorToNextCheckpoint()
     {
         Vector3 nextCheckpointDir = raceArea.Checkpoints[NextCheckpointIndex].transform.position - transform.position;
@@ -141,7 +195,7 @@ public class AgentRacer : Agent
         // Next checkpoint reached, update
         Debug.Log($"Agent collided with Checkpoint {NextCheckpointIndex}");
         NextCheckpointIndex = (NextCheckpointIndex + 1) % raceArea.Checkpoints.Count;
-        AddReward(0.5f);
+        AddReward(1.0f);
     }
     protected void HandleBoosting(float boost)
     {
