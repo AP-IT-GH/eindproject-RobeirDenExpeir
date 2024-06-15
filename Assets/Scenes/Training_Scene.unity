@@ -934,43 +934,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.0041449433
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 1.0496085
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.12
+      value: 18.115475
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.0009644529
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.0017332168
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.99999607
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.0019833283
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -0.227
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 179.889
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.199
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1028,6 +1028,10 @@ PrefabInstance:
     - target: {fileID: 7644136539811008864, guid: 55c6bbf6e82db4773915bc0bda8cec0a, type: 3}
       propertyPath: m_Name
       value: PlaneAgent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322661693028874553, guid: 55c6bbf6e82db4773915bc0bda8cec0a, type: 3}
+      propertyPath: m_SensorName
+      value: RaysDown
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
