@@ -21,44 +21,46 @@ public class PlayerRacer : AgentRacer
     }
     void FixedUpdate()
     {
-        // Get input from arrow keys
-        float roll = 0f;
-        float pitch = 0f;
-
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (GameManager.Instance.State == GameState.InGame)
         {
-            roll = -1;
+            // Get input from arrow keys
+            float roll = 0f;
+            float pitch = 0f;
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                roll = -1;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                roll = 1;
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                pitch = 1;
+            }
+            else if (Input.GetKey(KeyCode.UpArrow))
+            {
+                pitch = -1;
+            }
+
+            // Handle boost logic
+            float boost = Input.GetKey(KeyCode.Space) ? 1f : 0f;
+            HandleBoosting(boost);
+
+            // Determine current speed
+            float currentSpeed = isBoosting ? boostSpeed : speed;
+
+            // Apply rotation
+            float rollRotation = roll * rotationSpeed * Time.deltaTime;
+            float pitchRotation = pitch * rotationSpeed * Time.deltaTime;
+            rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(pitchRotation, 0, -rollRotation));
+
+            // Apply constant forward movement
+            Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
+            rigidbody.MovePosition(rigidbody.position + forwardMovement);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            roll = 1;
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            pitch = 1;
-        }
-        else if (Input.GetKey(KeyCode.UpArrow))
-        {
-            pitch = -1;
-        }
-
-        // Handle boost logic
-        float boost = Input.GetKey(KeyCode.Space) ? 1f : 0f;
-        HandleBoosting(boost);
-
-        // Determine current speed
-        float currentSpeed = isBoosting ? boostSpeed : speed;
-
-        // Apply rotation
-        float rollRotation = roll * rotationSpeed * Time.deltaTime;
-        float pitchRotation = pitch * rotationSpeed * Time.deltaTime;
-        rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(pitchRotation, 0, -rollRotation));
-
-        // Apply constant forward movement
-        Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
-        rigidbody.MovePosition(rigidbody.position + forwardMovement);
-        
     }
 
 
