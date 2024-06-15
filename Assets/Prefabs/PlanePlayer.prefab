@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2247231088856981013
+--- !u!1001 &6839703970128970797
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -50,37 +50,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
       propertyPath: m_Name
-      value: Plane
+      value: PlanePlayer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8430748255727000837, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5090328924011612484}
+      addedObject: {fileID: 185596748222909116}
     - targetCorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 232271667242818383}
+      addedObject: {fileID: 5580632405154000898}
     - targetCorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3241813617770430845}
+      addedObject: {fileID: 8921008986943156487}
     - targetCorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8198319588079491694}
+      addedObject: {fileID: 2765389617671236378}
   m_SourcePrefab: {fileID: 100100000, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
---- !u!1 &3725699604820473354 stripped
+--- !u!1 &8246124229799849010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
-  m_PrefabInstance: {fileID: 2247231088856981013}
+  m_PrefabInstance: {fileID: 6839703970128970797}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5090328924011612484
+--- !u!114 &185596748222909116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3725699604820473354}
+  m_GameObject: {fileID: 8246124229799849010}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
@@ -104,33 +105,13 @@ MonoBehaviour:
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
---- !u!114 &232271667242818383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3725699604820473354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 386de86ff1cb01a4ebca0f2f5444163f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  speed: 10
-  boostSpeed: 20
-  rotationSpeed: 100
-  liftForce: 10
---- !u!54 &3241813617770430845
+--- !u!54 &5580632405154000898
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3725699604820473354}
+  m_GameObject: {fileID: 8246124229799849010}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -151,13 +132,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &8198319588079491694
+--- !u!64 &8921008986943156487
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3725699604820473354}
+  m_GameObject: {fileID: 8246124229799849010}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -173,3 +154,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2765389617671236378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8246124229799849010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa4ffaf41d7f734bb72149363e4adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  speed: 10
+  boostSpeed: 20
+  rotationSpeed: 100
