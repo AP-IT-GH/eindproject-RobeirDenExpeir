@@ -13,7 +13,7 @@ public class RaceArea : MonoBehaviour
 
     private void Awake()
     {
-        Agents = transform.GetComponentsInChildren<AgentRacer>().ToList();
+        Agents = FindObjectsOfType<AgentRacer>().ToList();
         Debug.Log($"Found {Agents.Count} Agents");
     }
 
@@ -41,7 +41,7 @@ public class RaceArea : MonoBehaviour
         // Set the aircraft position and rotation
         var agentTransform = agent.transform;
         agentTransform.position = startPosition; // + positionOffset;
-        // agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
+        agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
     }
 }
 

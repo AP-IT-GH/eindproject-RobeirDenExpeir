@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
             case GameState.MainMenu:
                 PauseRace();
                 break;
+            case GameState.CountDown:
+                ResumeRace();
+                break;
             case GameState.InGame:
                 ResumeRace();
                 break;
@@ -93,6 +96,7 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     MainMenu,
+    CountDown,
     InGame,
     Paused,
     RaceEnd

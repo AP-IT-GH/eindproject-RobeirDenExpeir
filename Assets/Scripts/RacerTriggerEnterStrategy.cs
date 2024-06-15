@@ -15,7 +15,7 @@ public class RacerTriggerEnterStrategy : TriggerEnterStrategy
     /// <returns>The updated next checkpoint index.</returns>
     public int HandleTriggerEnter(Collider other, RaceArea raceArea, int nextCheckpointIndex)
     {
-        Checkpoint c = other.GetComponent<Checkpoint>();
+        Checkpoint c = other.GetComponentInParent<Checkpoint>();
         Debug.Log($"Collided with: {c.checkpointNumber}");
         if (c.checkpointNumber == nextCheckpointIndex)
         {
