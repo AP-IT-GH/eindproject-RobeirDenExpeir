@@ -7,6 +7,7 @@ using UnityEngine;
 public class RaceArea : MonoBehaviour
 {
     public List<Checkpoint> Checkpoints { get; set; }
+    public StartPoint startPoint;
 
     public List<AgentRacer> Agents { get; private set; }
 
@@ -14,6 +15,7 @@ public class RaceArea : MonoBehaviour
     private void Awake()
     {
         Agents = FindObjectsOfType<AgentRacer>().ToList();
+        startPoint = GetComponentInChildren<StartPoint>();
         Debug.Log($"Found {Agents.Count} Agents");
     }
 
@@ -42,6 +44,18 @@ public class RaceArea : MonoBehaviour
         var agentTransform = agent.transform;
         agentTransform.position = startPosition; // + positionOffset;
         agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
+    }
+    
+    public void SpawnAgent(AgentRacer agent)
+    {
+            Vector3 startPosition = startPoint.gameObject.transform.position;
+            Vector3 positionOffset = Vector3.right * (Agents.IndexOf(agent) - Agents.Count / 2f)
+                                                   * UnityEngine.Random.Range(9f, 10f);
+            
+            // Set the aircraft position and rotation
+            var agentTransform = agent.transform;
+            agentTransform.position = startPosition + positionOffset;
+            agentTransform.rotation = startPoint.gameObject.transform.rotation;
     }
 }
 
