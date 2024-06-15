@@ -65,7 +65,7 @@ public class AgentRacer : Agent
 
             // Determine current speed
             float currentSpeed = isBoosting ? boostSpeed : speed;
-
+            
             // Apply rotation
             float rollRotation = roll * rotationSpeed * Time.deltaTime;
             float pitchRotation = pitch * rotationSpeed * Time.deltaTime;
@@ -154,5 +154,4 @@ public class AgentRacer : Agent
             cooldownTimer -= Time.deltaTime;
         }
     }
-
 }

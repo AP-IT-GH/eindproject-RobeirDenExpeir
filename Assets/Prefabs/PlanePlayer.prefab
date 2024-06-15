@@ -67,8 +67,29 @@ PrefabInstance:
       addedObject: {fileID: 8921008986943156487}
     - targetCorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5274110955096685433}
+      addedObject: {fileID: 7717188520533546609}
+    - targetCorrespondingSourceObject: {fileID: 6983608718117645486, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3461510557111113402}
   m_SourcePrefab: {fileID: 100100000, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
+--- !u!1 &4467924482688084099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6983608718117645486, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
+  m_PrefabInstance: {fileID: 6839703970128970797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3461510557111113402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467924482688084099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ac3792faa2c4bdab93fe9f37954518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: {x: 0, y: 0, z: 10000}
 --- !u!1 &8246124229799849010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
@@ -87,19 +108,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 9
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 01000000
-    VectorActionSize: 01000000
+      BranchSizes: 030000000300000002000000
+    VectorActionSize: 030000000300000002000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: My Behavior
+  m_BehaviorName: AirplaneLearning
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -153,7 +174,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &5274110955096685433
+--- !u!114 &7717188520533546609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
