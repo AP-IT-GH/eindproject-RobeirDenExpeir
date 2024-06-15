@@ -21,7 +21,7 @@ public class RacerTriggerEnterStrategy : TriggerEnterStrategy
         {
             Debug.Log($"Collided with checkpoint: {nextCheckpointIndex} ");
             nextCheckpointIndex = (nextCheckpointIndex + 1) % raceArea.Checkpoints.Count;
-            Debug.Log($"NextCheckpointIndex: {nextCheckpointIndex}, CheckpointNumber: {other.GetComponent<Checkpoint>().checkpointNumber}, RaceArea.Checkpoints.Count: {raceArea.Checkpoints.Count}");
+            Debug.Log($"NextCheckpointIndex: {nextCheckpointIndex}, CheckpointNumber: {c.checkpointNumber}, RaceArea.Checkpoints.Count: {raceArea.Checkpoints.Count}");
         }
 
         return nextCheckpointIndex;

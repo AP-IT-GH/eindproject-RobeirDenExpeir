@@ -17,9 +17,11 @@ public class AgentRacer : Agent
     #region Controls
 
     //Regular Controls
-    public float speed = 10f;                  // Normal forward speed
-    public float boostSpeed = 20f;             // Speed during boost
-    public float rotationSpeed = 100f;         // Rotation speed
+    public float speed = 10f; // Normal forward speed
+    public float yawSpeed = 100f;
+    public float rollSpeed = 100f;
+    public float pitchSpeed = 100f; // Normal forward speed
+    public float boostSpeed = 20f; // Speed during boost
 
     //Boost
     protected bool isBoosting = false;
@@ -27,7 +29,7 @@ public class AgentRacer : Agent
     protected float boostCooldown = 5f;
     protected float boostTimer = 0f;
     protected float cooldownTimer = 0f;
-
+    
     #endregion
 
 
@@ -58,6 +60,7 @@ public class AgentRacer : Agent
         {
             float roll = Mathf.Clamp(actionBuffers.ContinuousActions[0], -1f, 1f);
             float pitch = Mathf.Clamp(actionBuffers.ContinuousActions[1], -1f, 1f);
+            float yaw = Mathf.Clamp(actionBuffers.ContinuousActions[2], -1f, 1f);
             float boost = Mathf.Clamp(actionBuffers.DiscreteActions[0], 0f, 1f);
 
             // Handle boost logic
@@ -65,15 +68,18 @@ public class AgentRacer : Agent
 
             // Determine current speed
             float currentSpeed = isBoosting ? boostSpeed : speed;
-            
-            // Apply rotation
-            float rollRotation = roll * rotationSpeed * Time.deltaTime;
-            float pitchRotation = pitch * rotationSpeed * Time.deltaTime;
-            rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(pitchRotation, 0, -rollRotation));
 
-            // Apply constant forward movement
+            float rollRotation = roll * rollSpeed * Time.deltaTime;
+            float pitchRotation = pitch * pitchSpeed * Time.deltaTime;
+            float yawRotation = yaw * yawSpeed * Time.deltaTime;
+
+            // Hier de volgorde van de Euler hoeken mogelijk aanpassen afhankelijk van de asoriëntatie van je model
+            Quaternion deltaRotation = Quaternion.Euler(-pitchRotation, yawRotation, -rollRotation);
+            rigidbody.MoveRotation(rigidbody.rotation * deltaRotation);
+
             Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
             rigidbody.MovePosition(rigidbody.position + forwardMovement);
+            
 
             // Example: Reward for moving forward
             AddReward(currentSpeed * 0.001f);
