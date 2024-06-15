@@ -25,7 +25,7 @@ public class MainMenuEvents : MonoBehaviour
     private void OnStartButtonClicked(ClickEvent evt)
     {
         Debug.Log("Start button clicked");
-        GameManager.Instance.UpdateGameState(GameState.InGame);
+        GameManager.Instance.UpdateGameState(GameState.CountDown);
     }
     
 }

@@ -322,6 +322,7 @@ MonoBehaviour:
   _mainMenu: {fileID: 710829484}
   _pauseMenu: {fileID: 2010411498}
   _playerPositionUI: {fileID: 1223085291}
+  _countdownUI: {fileID: 66929562}
 --- !u!4 &181650330
 Transform:
   m_ObjectHideFlags: 0
@@ -958,7 +959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8735803365969524360, guid: a6a0dbbb866254dada3400ad1a00ccc9, type: 3}
       propertyPath: m_LocalPosition.y

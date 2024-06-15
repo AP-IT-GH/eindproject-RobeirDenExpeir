@@ -54,27 +54,30 @@ public class AgentRacer : Agent
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         // Continuous actions
-        float roll = Mathf.Clamp(actionBuffers.ContinuousActions[0], -1f, 1f);
-        float pitch = Mathf.Clamp(actionBuffers.ContinuousActions[1], -1f, 1f);
-        float boost = Mathf.Clamp(actionBuffers.DiscreteActions[0], 0f, 1f);
+        if (GameManager.Instance.State == GameState.InGame)
+        {
+            float roll = Mathf.Clamp(actionBuffers.ContinuousActions[0], -1f, 1f);
+            float pitch = Mathf.Clamp(actionBuffers.ContinuousActions[1], -1f, 1f);
+            float boost = Mathf.Clamp(actionBuffers.DiscreteActions[0], 0f, 1f);
 
-        // Handle boost logic
-        HandleBoosting(boost);
+            // Handle boost logic
+            HandleBoosting(boost);
 
-        // Determine current speed
-        float currentSpeed = isBoosting ? boostSpeed : speed;
+            // Determine current speed
+            float currentSpeed = isBoosting ? boostSpeed : speed;
 
-        // Apply rotation
-        float rollRotation = roll * rotationSpeed * Time.deltaTime;
-        float pitchRotation = pitch * rotationSpeed * Time.deltaTime;
-        rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(pitchRotation, 0, -rollRotation));
+            // Apply rotation
+            float rollRotation = roll * rotationSpeed * Time.deltaTime;
+            float pitchRotation = pitch * rotationSpeed * Time.deltaTime;
+            rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(pitchRotation, 0, -rollRotation));
 
-        // Apply constant forward movement
-        Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
-        rigidbody.MovePosition(rigidbody.position + forwardMovement);
+            // Apply constant forward movement
+            Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
+            rigidbody.MovePosition(rigidbody.position + forwardMovement);
 
-        // Example: Reward for moving forward
-        AddReward(currentSpeed * 0.001f);
+            // Example: Reward for moving forward
+            AddReward(currentSpeed * 0.001f);
+        }
     }
 
     public override void Initialize()
@@ -128,8 +131,6 @@ public class AgentRacer : Agent
         Debug.Log($"Agent collided with Checkpoint {NextCheckpointIndex}");
         NextCheckpointIndex = (NextCheckpointIndex + 1) % raceArea.Checkpoints.Count;
         AddReward(0.5f);
-
-
     }
     protected void HandleBoosting(float boost)
     {
