@@ -23,10 +23,7 @@ public class RaceArea : MonoBehaviour
 
     void Start()
     {
-        Checkpoints = GetComponentsInChildren<Checkpoint>().ToList();
-        Debug.Log($"Found {Checkpoints.Count} checkpoints");
-        Checkpoints.Sort((a, b) => a.checkpointNumber.CompareTo(b.checkpointNumber));
-        Checkpoints[0].SetVisible(true);
+        ResetCheckpoints();
     }
 
     public void ResetAgentPosition(AgentRacer agent)
@@ -45,6 +42,23 @@ public class RaceArea : MonoBehaviour
         var agentTransform = agent.transform;
         agentTransform.position = startPosition; // + positionOffset;
         agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
+    }
+
+    public void ResetRace()
+    {
+        foreach (var agent in Agents)
+        {
+            SpawnAgent(agent);
+        }
+        ResetCheckpoints();
+    }
+
+    private void ResetCheckpoints()
+    {
+        Checkpoints = GetComponentsInChildren<Checkpoint>().ToList();
+        Debug.Log($"Found {Checkpoints.Count} checkpoints");
+        Checkpoints.Sort((a, b) => a.checkpointNumber.CompareTo(b.checkpointNumber));
+        Checkpoints[0].SetVisible(true);
     }
     
     public void SpawnAgent(AgentRacer agent)

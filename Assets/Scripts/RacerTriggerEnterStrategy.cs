@@ -23,7 +23,7 @@ public class RacerTriggerEnterStrategy : TriggerEnterStrategy
             Debug.Log("Finished the race!");
             GameManager.Instance.UpdateGameState(GameState.RaceEnd);
             return nextCheckpointIndex;
-        } 
+        }
         if (c.checkpointNumber == nextCheckpointIndex)
         {
             Debug.Log($"Collided with checkpoint: {nextCheckpointIndex} ");
