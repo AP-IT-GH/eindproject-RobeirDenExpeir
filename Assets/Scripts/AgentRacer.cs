@@ -40,6 +40,8 @@ public class AgentRacer : Agent
     {
         NextCheckpointIndex = 0;
         isBoosting = false;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
     }
 
     public override void Initialize()

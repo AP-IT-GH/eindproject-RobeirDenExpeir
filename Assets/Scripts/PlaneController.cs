@@ -13,8 +13,7 @@ public class PlaneController : MonoBehaviour
     public float liftForce = 10f;              // Lift force to keep the plane in the air
     public float lateralSpeed = 5f;            // Speed for lateral movement (left and right)
     public float maxRollAngle = 45f;           // Maximum roll angle
-
-    public TMP_Text speedometerText;           // Reference to the UI Text element
+    
     public Image boostBarFill;                 // Reference to the boost bar fill image
 
     public GameObject boostBarFull;            // Reference to the BoostBarFull GameObject
@@ -59,9 +58,11 @@ public class PlaneController : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // Get input from XR controllers or keyboard
+        if (GameManager.Instance.State == GameState.InGame)
+        {
+            // Get input from XR controllers or keyboard
         float roll = 0f;
         float pitch = 0f;
         float lateralMovement = 0f;
@@ -186,14 +187,7 @@ public class PlaneController : MonoBehaviour
         // Apply constant forward movement
         Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
         rb.MovePosition(rb.position + forwardMovement);
-
-        // Apply lift force to keep the plane in the air
-        Vector3 lift = transform.up * liftForce * Time.deltaTime;
-        rb.AddForce(lift, ForceMode.Acceleration);
-
-        // Update speedometer text
-        speedometerText.text = $"Speed: {currentSpeed:F1} units/sec";
-
+        
         // Update boost bar fill amount
         if (boostBarFill != null)
         {
@@ -220,6 +214,7 @@ public class PlaneController : MonoBehaviour
                 boostBarFull.SetActive(false);
                 boostBarEmpty.SetActive(true);
             }
+        }
         }
     }
 }

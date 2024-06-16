@@ -10,7 +10,6 @@ public class RaceManager : MonoBehaviour
     public List<AgentRacer> Racers { get; private set; }
     public RaceArea RaceArea;
     [SerializeField] private CountdownUIController _countdownUIController;
-    public bool RaceStarted { get; private set; }
 
     public int PlayerPosition { get; private set; }
 
