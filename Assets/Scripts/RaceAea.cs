@@ -31,12 +31,15 @@ public class RaceArea : MonoBehaviour
             agentTransform.position = startPoint.gameObject.transform.position;
             agentTransform.rotation = startPoint.gameObject.transform.rotation;
         }
-        
+        else
+        {
+            agentTransform.position = Checkpoints[previousCheckpoint].gameObject.transform.position;
+            agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
+        }
 
         // Set the aircraft position and rotation
         
-        agentTransform.position = Checkpoints[previousCheckpoint].gameObject.transform.position;
-        agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
+        
     }
 
     public void ResetRace()
