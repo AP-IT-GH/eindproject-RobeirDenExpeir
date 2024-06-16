@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private UIDocument _pauseMenu;
     [SerializeField] private UIDocument _playerPositionUI;
     [SerializeField] private UIDocument _countdownUI;
+    [SerializeField] private UIDocument _gameEndUI;
 
     private void Awake()
     {
@@ -27,5 +28,6 @@ public class MenuManager : MonoBehaviour
         _pauseMenu.rootVisualElement.style.display = (state == GameState.Paused) ? DisplayStyle.Flex : DisplayStyle.None;
         _countdownUI.rootVisualElement.style.display = (state == GameState.CountDown) ? DisplayStyle.Flex : DisplayStyle.None;
         _playerPositionUI.rootVisualElement.style.display = (state == GameState.InGame) ? DisplayStyle.Flex : DisplayStyle.None;
+        _gameEndUI.rootVisualElement.style.display = (state == GameState.RaceEnd) ? DisplayStyle.Flex : DisplayStyle.None;
     }
 }

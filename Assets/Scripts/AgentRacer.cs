@@ -1,3 +1,4 @@
+using System;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -35,7 +36,11 @@ public class AgentRacer : Agent
         raceArea = GetComponentInParent<RaceArea>();
         _triggerEnterStrategy = new RacerTriggerEnterStrategy(); // Replace with AgentTriggerEnterStrategy?
     }
-
+    public void Reset()
+    {
+        NextCheckpointIndex = 0;
+        isBoosting = false;
+        
     public override void Initialize()
     {
         raceArea = GetComponentInParent<RaceArea>();

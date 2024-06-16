@@ -8,6 +8,7 @@ public class RaceManager : MonoBehaviour
 {
     public static RaceManager Instance { get; private set; }
     public List<AgentRacer> Racers { get; private set; }
+    public RaceArea RaceArea;
     [SerializeField] private CountdownUIController _countdownUIController;
     public bool RaceStarted { get; private set; }
 
@@ -28,6 +29,7 @@ public class RaceManager : MonoBehaviour
 
     private void Start()
     {
+        RaceArea = FindObjectOfType<RaceArea>();
         InitializeRace();
     }
 
@@ -48,6 +50,17 @@ public class RaceManager : MonoBehaviour
         yield return _countdownUIController.StartCountdown();
         
             GameManager.Instance.UpdateGameState(GameState.InGame);
+    }
+
+    public void ResetRace()
+    {
+        InitializeRace();
+        foreach (var racer in Racers)
+        {
+            racer.Reset();
+        }
+
+        RaceArea.ResetRace();
     }
     
     

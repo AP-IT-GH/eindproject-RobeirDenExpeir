@@ -100,6 +100,11 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.RaceEnd);
         OnRaceEnd?.Invoke(result, playerPosition, totalRacers);
     }
+    
+    public void ResetRace()
+    {
+        UpdateGameState(GameState.CountDown);
+    }
 }
 
 public enum GameState
