@@ -8,7 +8,6 @@ public class MainMenuEvents : MonoBehaviour
 {
     private UIDocument _uiDocument;
     private Button _startButton;
-    private Button _pauseButton;
 
     private void Awake()
     {
