@@ -1,4 +1,3 @@
-using System;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -27,41 +26,71 @@ public class AgentRacer : Agent
     protected float boostCooldown = 5f;
     protected float boostTimer = 0f;
     protected float cooldownTimer = 0f;
-    
+
     #endregion
 
 
     public virtual void Awake()
     {
-        raceArea = FindObjectOfType<RaceArea>();
+        raceArea = GetComponentInParent<RaceArea>();
         _triggerEnterStrategy = new RacerTriggerEnterStrategy(); // Replace with AgentTriggerEnterStrategy?
     }
-
+    
     public void Reset()
     {
         NextCheckpointIndex = 0;
         isBoosting = false;
     }
 
+    public override void Initialize()
+    {
+        raceArea = GetComponentInParent<RaceArea>();
+        rigidbody = GetComponent<Rigidbody>();
+        rigidbody.useGravity = false;
+    }
+    
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.useGravity = false; // Disable gravity to simulate lift more effectively
     }
 
+    public override void OnEpisodeBegin()
+    {
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        NextCheckpointIndex = 0;
+        raceArea.SpawnAgent(agent: this);
+
+        boostTimer = 0f;
+        cooldownTimer = 0f;
+        isBoosting = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, raceArea, NextCheckpointIndex);
-        if (other.gameObject == raceArea.Checkpoints[NextCheckpointIndex].gameObject)
+        if (other.gameObject.CompareTag("checkpoint") && other.GetComponentInParent<Checkpoint>().checkpointNumber == NextCheckpointIndex)
         {
-            GotCheckpoint();
+            Debug.Log("Reward granted");
+            AddReward(2.0f);
+            if (NextCheckpointIndex == raceArea.Checkpoints.Count - 1)
+            {
+                Debug.Log("Finished the race!");
+                EndEpisode();
+            }
         }
+        Debug.Log($"Test index: {NextCheckpointIndex}");
+        NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, raceArea, NextCheckpointIndex);
+        Debug.Log($"Next Test index: {NextCheckpointIndex}");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        AddReward(-0.5f);
-        EndEpisode();
+        if (!collision.gameObject.CompareTag("checkpoint"))
+        {
+            AddReward(-0.2f);
+            EndEpisode();
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -90,38 +119,19 @@ public class AgentRacer : Agent
 
             Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
             rigidbody.MovePosition(rigidbody.position + forwardMovement);
-            
-
-            // Example: Reward for moving forward
-            AddReward(currentSpeed * 0.001f);
         }
-    }
-
-    public override void Initialize()
-    {
-        raceArea = FindObjectOfType<RaceArea>();
-        rigidbody = GetComponent<Rigidbody>();
-    }
-
-    public override void OnEpisodeBegin()
-    {
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.angularVelocity = Vector3.zero;
-        raceArea.SpawnAgent(agent: this);
-
-        boostTimer = 0f;
-        cooldownTimer = 0f;
-        isBoosting = false;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        /*
         // Collect roll and pitch observations
         Vector3 localEulerAngles = transform.localRotation.eulerAngles;
         float roll = localEulerAngles.z;
         float pitch = localEulerAngles.x;
         sensor.AddObservation(roll);
         sensor.AddObservation(pitch);
+        */
         // Observe aircraft velocity (1 Vector3 = 3 values)
         sensor.AddObservation(transform.InverseTransformDirection(rigidbody.velocity));
 
@@ -190,6 +200,7 @@ public class AgentRacer : Agent
         return localCheckpointDir;
     }
 
+
     private void GotCheckpoint()
     {
         // Next checkpoint reached, update
@@ -197,6 +208,7 @@ public class AgentRacer : Agent
         NextCheckpointIndex = (NextCheckpointIndex + 1) % raceArea.Checkpoints.Count;
         AddReward(1.0f);
     }
+
     protected void HandleBoosting(float boost)
     {
         if (boost > 0.5f && cooldownTimer <= 0f)
