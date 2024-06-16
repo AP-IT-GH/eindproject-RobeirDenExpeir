@@ -1,0 +1,65 @@
+{
+    "AirRacers": {
+        "checkpoints": [
+            {
+                "steps": 240498,
+                "file_path": "results\\AirRacers_Robeir\\AirRacers\\AirRacers-240498.onnx",
+                "reward": 4.274576231963554,
+                "creation_time": 1718492646.094645,
+                "auxillary_file_paths": [
+                    "results\\AirRacers_Robeir\\AirRacers\\AirRacers-240498.pt"
+                ]
+            },
+            {
+                "steps": 286723,
+                "file_path": "results\\AirRacers_Robeir\\AirRacers\\AirRacers-286723.onnx",
+                "reward": 11.800000118091702,
+                "creation_time": 1718492897.9413562,
+                "auxillary_file_paths": [
+                    "results\\AirRacers_Robeir\\AirRacers\\AirRacers-286723.pt"
+                ]
+            },
+            {
+                "steps": 499929,
+                "file_path": "results\\AirRacers_Robeir\\AirRacers\\AirRacers-499929.onnx",
+                "reward": 11.694736831282315,
+                "creation_time": 1718493916.9819584,
+                "auxillary_file_paths": [
+                    "results\\AirRacers_Robeir\\AirRacers\\AirRacers-499929.pt"
+                ]
+            },
+            {
+                "steps": 999880,
+                "file_path": "results\\AirRacers_Robeir\\AirRacers\\AirRacers-999880.onnx",
+                "reward": 12.989999996870756,
+                "creation_time": 1718497188.3684845,
+                "auxillary_file_paths": [
+                    "results\\AirRacers_Robeir\\AirRacers\\AirRacers-999880.pt"
+                ]
+            },
+            {
+                "steps": 1100566,
+                "file_path": "results\\AirRacers_Robeir\\AirRacers\\AirRacers-1100566.onnx",
+                "reward": 12.5435897367887,
+                "creation_time": 1718498042.3329084,
+                "auxillary_file_paths": [
+                    "results\\AirRacers_Robeir\\AirRacers\\AirRacers-1100566.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1100566,
+            "file_path": "results\\AirRacers_Robeir\\AirRacers.onnx",
+            "reward": 12.5435897367887,
+            "creation_time": 1718498042.3329084,
+            "auxillary_file_paths": [
+                "results\\AirRacers_Robeir\\AirRacers\\AirRacers-1100566.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
