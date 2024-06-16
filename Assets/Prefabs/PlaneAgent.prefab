@@ -257,9 +257,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2189905262629531306}
-    - targetCorrespondingSourceObject: {fileID: 3214335149762930719, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6210408015983919578}
     - targetCorrespondingSourceObject: {fileID: 6983608718117645486, guid: 6714f9465730841e494dffc10ba1d348, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7946679969242997178}
@@ -392,24 +389,3 @@ MonoBehaviour:
   rollSpeed: 100
   pitchSpeed: 100
   boostSpeed: 20
---- !u!65 &6210408015983919578
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7644136539811008864}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

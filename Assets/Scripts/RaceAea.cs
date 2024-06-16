@@ -14,10 +14,9 @@ public class RaceArea : MonoBehaviour
 
     private void Awake()
     {
-        Agents = GetComponentsInChildren<AgentRacer>().ToList();
+        Agents = FindObjectsOfType<AgentRacer>().ToList();
         startPoint = GetComponentInChildren<StartPoint>();
         Debug.Log($"Found {Agents.Count} Agents");
-        Debug.Log($"Start position {startPoint.gameObject.transform.position}");
     }
 
 
