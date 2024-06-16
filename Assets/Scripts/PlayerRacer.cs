@@ -6,13 +6,6 @@ using TMPro;
 
 public class PlayerRacer : AgentRacer
 {
-    //Boost UI
-    // public TMP_Text speedometerText;           // Reference to the UI Text element
-    // public Image boostBarFill;                 // Reference to the boost bar fill image
-    //
-    // public GameObject boostBarFull;            // Reference to the BoostBarFull GameObject
-    // public GameObject boostBarEmpty;           // Reference to the BoostBarEmpty GameObject
-
     public override void Awake()
     {
         base.Awake();

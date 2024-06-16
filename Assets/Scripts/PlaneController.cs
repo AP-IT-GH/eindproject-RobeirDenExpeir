@@ -181,18 +181,13 @@ public class PlaneController : MonoBehaviour
         rb.MoveRotation(targetRotation);
 
         // Apply lateral movement
-        // Vector3 lateralMovementVector = transform.right * lateralMovement * lateralSpeed * Time.deltaTime;
-        // rb.MovePosition(rb.position + lateralMovementVector);
+        Vector3 lateralMovementVector = transform.right * lateralMovement * lateralSpeed * Time.deltaTime;
+        rb.MovePosition(rb.position + lateralMovementVector);
 
         // Apply constant forward movement
         Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
         rb.MovePosition(rb.position + forwardMovement);
-
-        // Apply lift force to keep the plane in the air
-        // Vector3 lift = transform.up * liftForce * Time.deltaTime;
-        // rb.AddForce(lift, ForceMode.Acceleration);
         
-
         // Update boost bar fill amount
         if (boostBarFill != null)
         {
