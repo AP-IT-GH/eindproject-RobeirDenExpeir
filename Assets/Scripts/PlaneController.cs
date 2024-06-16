@@ -198,13 +198,9 @@ public class PlaneController : MonoBehaviour
         if (boostBarFill != null)
         {
             if (cooldownTimer > 0f)
-            {
                 boostBarFill.fillAmount = 1.0f - (cooldownTimer / boostCooldown);
-            }
             else
-            {
                 boostBarFill.fillAmount = 1.0f;
-            }
         }
 
         // Update boost bar visibility
