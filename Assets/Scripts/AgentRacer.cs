@@ -63,10 +63,15 @@ public class AgentRacer : Agent
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("checkpoint"))
+        if (other.gameObject.CompareTag("checkpoint") && other.GetComponentInParent<Checkpoint>().checkpointNumber == NextCheckpointIndex)
         {
             Debug.Log("Reward granted");
             AddReward(2.0f);
+            if (NextCheckpointIndex == raceArea.Checkpoints.Count - 1)
+            {
+                Debug.Log("Finished the race!");
+                EndEpisode();
+            }
         }
         Debug.Log($"Test index: {NextCheckpointIndex}");
         NextCheckpointIndex = _triggerEnterStrategy.HandleTriggerEnter(other, raceArea, NextCheckpointIndex);
