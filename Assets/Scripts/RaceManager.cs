@@ -8,7 +8,9 @@ public class RaceManager : MonoBehaviour
 {
     public static RaceManager Instance { get; private set; }
     public List<AgentRacer> Racers { get; private set; }
+    public RaceArea RaceArea;
     [SerializeField] private CountdownUIController _countdownUIController;
+    public bool RaceStarted { get; private set; }
 
     public int PlayerPosition { get; private set; }
 
@@ -27,6 +29,7 @@ public class RaceManager : MonoBehaviour
 
     private void Start()
     {
+        RaceArea = FindObjectOfType<RaceArea>();
         InitializeRace();
     }
 
@@ -45,30 +48,21 @@ public class RaceManager : MonoBehaviour
     private IEnumerator StartRace()
     {
         yield return _countdownUIController.StartCountdown();
+        
+            GameManager.Instance.UpdateGameState(GameState.InGame);
     }
 
-    private void Update()
+    public void ResetRace()
     {
-        UpdateRacerPositions();
-        UpdatePlayerPosition();
-    }
-
-    private void UpdateRacerPositions()
-    {
-        // Sort racers by their progress (you need to define how to measure progress)
-        Racers.Sort((racer1, racer2) => racer2.Position.CompareTo(racer1.Position));
-    }
-
-    private void UpdatePlayerPosition()
-    {
-        // Find player's position
-        for (int i = 0; i < Racers.Count; i++)
+        InitializeRace();
+        foreach (var racer in Racers)
         {
-            if (Racers[i].IsPlayer)
-            {
-                PlayerPosition = i + 1;
-                break;
-            }
+            racer.Reset();
         }
+
+        RaceArea.ResetRace();
     }
+    
+    
+    
 }

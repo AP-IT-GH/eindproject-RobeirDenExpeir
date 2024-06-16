@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnGameStateChanged;
     public static event Action<string, int, int> OnRaceEnd;
 
+    public bool isTraining = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -27,7 +29,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateGameState(GameState.MainMenu);
+        if (isTraining)
+        {
+            UpdateGameState(GameState.InGame);
+        }
+        else
+        {
+            UpdateGameState(GameState.MainMenu);
+        }
     }
     
     public void OnApplicationQuit()
@@ -57,6 +66,9 @@ public class GameManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 PauseRace();
+                break;
+            case GameState.CountDown:
+                ResumeRace();
                 break;
             case GameState.InGame:
                 ResumeRace();
@@ -88,11 +100,17 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.RaceEnd);
         OnRaceEnd?.Invoke(result, playerPosition, totalRacers);
     }
+    
+    public void ResetRace()
+    {
+        UpdateGameState(GameState.CountDown);
+    }
 }
 
 public enum GameState
 {
     MainMenu,
+    CountDown,
     InGame,
     Paused,
     RaceEnd

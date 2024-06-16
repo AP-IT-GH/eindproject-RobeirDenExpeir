@@ -15,13 +15,19 @@ public class RacerTriggerEnterStrategy : TriggerEnterStrategy
     /// <returns>The updated next checkpoint index.</returns>
     public int HandleTriggerEnter(Collider other, RaceArea raceArea, int nextCheckpointIndex)
     {
-        Checkpoint c = other.GetComponent<Checkpoint>();
-        Debug.Log($"Collided with: {c.checkpointNumber}");
+        Checkpoint c = other.GetComponentInParent<Checkpoint>();
+        if(c.checkpointNumber == nextCheckpointIndex && nextCheckpointIndex == raceArea.Checkpoints.Count - 1)
+        {
+            //Final checkpoint
+            Debug.Log("Finished the race!");
+            GameManager.Instance.UpdateGameState(GameState.RaceEnd);
+            return nextCheckpointIndex;
+        }
         if (c.checkpointNumber == nextCheckpointIndex)
         {
             Debug.Log($"Collided with checkpoint: {nextCheckpointIndex} ");
-            nextCheckpointIndex = (nextCheckpointIndex + 1) % raceArea.Checkpoints.Count;
-            Debug.Log($"NextCheckpointIndex: {nextCheckpointIndex}, CheckpointNumber: {other.GetComponent<Checkpoint>().checkpointNumber}, RaceArea.Checkpoints.Count: {raceArea.Checkpoints.Count}");
+            nextCheckpointIndex++;
+            Debug.Log($"NextCheckpointIndex: {nextCheckpointIndex}, CheckpointNumber: {c.checkpointNumber}, RaceArea.Checkpoints.Count: {raceArea.Checkpoints.Count}");
         }
 
         return nextCheckpointIndex;

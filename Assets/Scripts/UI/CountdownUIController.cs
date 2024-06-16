@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class CountdownUIController : MonoBehaviour
 {
-    [SerializeField] private UIDocument _countdownUI;
+    private UIDocument _countdownUI;
     private Label _countdownText;
     private void Awake()
     {

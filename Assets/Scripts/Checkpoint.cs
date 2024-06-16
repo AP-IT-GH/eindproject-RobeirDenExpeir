@@ -14,6 +14,6 @@ public class Checkpoint : MonoBehaviour
     
     public void SetVisible(bool visible)
     {
-        this.GetComponent<MeshRenderer>().enabled = visible;
+        this.GetComponentInChildren<MeshRenderer>().enabled = visible;
     }
 }
