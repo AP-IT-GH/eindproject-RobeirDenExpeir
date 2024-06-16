@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3084111733642343963}
   m_Layer: 0
   m_Name: CheckpointBody
-  m_TagString: checkpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 681675407209113094}
   m_Layer: 0
   m_Name: Checkpoint
-  m_TagString: checkpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

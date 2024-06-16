@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Anchor
   - Racer
-  - checkpoint
   layers:
   - Default
   - TransparentFX

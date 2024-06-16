@@ -1,26 +1,4 @@
 {
-    "AirRacers": {
-        "checkpoints": [
-            {
-                "steps": 52307,
-                "file_path": "results/AirRacers/AirRacers/AirRacers-52307.onnx",
-                "reward": 4.004379565807154,
-                "creation_time": 1718487907.671322,
-                "auxillary_file_paths": [
-                    "results/AirRacers/AirRacers/AirRacers-52307.pt"
-                ]
-            }
-        ],
-        "final_checkpoint": {
-            "steps": 52307,
-            "file_path": "results/AirRacers/AirRacers.onnx",
-            "reward": 4.004379565807154,
-            "creation_time": 1718487907.671322,
-            "auxillary_file_paths": [
-                "results/AirRacers/AirRacers/AirRacers-52307.pt"
-            ]
-        }
-    },
     "metadata": {
         "stats_format_version": "0.3.0",
         "mlagents_version": "0.30.0",

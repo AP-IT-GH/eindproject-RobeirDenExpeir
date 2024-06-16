@@ -16,7 +16,6 @@ public class RacerTriggerEnterStrategy : TriggerEnterStrategy
     public int HandleTriggerEnter(Collider other, RaceArea raceArea, int nextCheckpointIndex)
     {
         Checkpoint c = other.GetComponentInParent<Checkpoint>();
-        Debug.Log($"Collided with: {c.checkpointNumber} - nextCheckpoint: {nextCheckpointIndex}");
         if(c.checkpointNumber == nextCheckpointIndex && nextCheckpointIndex == raceArea.Checkpoints.Count - 1)
         {
             //Final checkpoint
