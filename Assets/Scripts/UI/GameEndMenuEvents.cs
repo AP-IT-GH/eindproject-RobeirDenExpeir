@@ -40,7 +40,7 @@ public class GameEndMenuEvents : MonoBehaviour
     {
         Debug.Log("Main menu button clicked");
         RaceManager.Instance.ResetRace();
-        _CameraFollow.ResetCamera();
+        // _CameraFollow.ResetCamera();
         GameManager.Instance.UpdateGameState(GameState.MainMenu);
         
     }
