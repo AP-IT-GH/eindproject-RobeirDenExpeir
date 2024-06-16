@@ -14,7 +14,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Inputs
     /// </remarks>
     /// <seealso cref="InputAction"/>
     [AddComponentMenu("Input/Input Action Manager")]
-    [HelpURL(XRHelpURLConstants.k_InputActionManager)]
+    // [HelpURL(XRHelpURLConstants.k_InputActionManager)]
     public class InputActionManager : MonoBehaviour
     {
         [SerializeField]
