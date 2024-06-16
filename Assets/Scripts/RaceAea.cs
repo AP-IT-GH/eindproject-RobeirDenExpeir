@@ -8,7 +8,6 @@ public class RaceArea : MonoBehaviour
 {
     public List<Checkpoint> Checkpoints { get; set; }
     public StartPoint startPoint;
-
     public List<AgentRacer> Agents { get; private set; }
 
 
@@ -19,27 +18,24 @@ public class RaceArea : MonoBehaviour
         Debug.Log($"Found {Agents.Count} Agents");
     }
 
-
     void Start()
     {
         ResetCheckpoints();
     }
-
     public void ResetAgentPosition(AgentRacer agent)
     {
+        var agentTransform = agent.transform;
         int previousCheckpoint = agent.NextCheckpointIndex - 1;
-        if (previousCheckpoint == -1) previousCheckpoint = Checkpoints.Count - 1;
-
-        Vector3 startPosition = Checkpoints[0].gameObject.transform.position;
-
-
-        // Calculate a horizontal offset so that agents are spread out
-        Vector3 positionOffset = Vector3.right * (Agents.IndexOf(agent) - Agents.Count / 2f)
-            * UnityEngine.Random.Range(9f, 10f);
+        if (previousCheckpoint == -1)
+        {
+            agentTransform.position = startPoint.gameObject.transform.position;
+            agentTransform.rotation = startPoint.gameObject.transform.rotation;
+        }
+        
 
         // Set the aircraft position and rotation
-        var agentTransform = agent.transform;
-        agentTransform.position = startPosition; // + positionOffset;
+        
+        agentTransform.position = Checkpoints[previousCheckpoint].gameObject.transform.position;
         agentTransform.rotation = Checkpoints[previousCheckpoint].gameObject.transform.rotation;
     }
 
@@ -63,8 +59,10 @@ public class RaceArea : MonoBehaviour
     public void SpawnAgent(AgentRacer agent)
     {
             Vector3 startPosition = startPoint.gameObject.transform.position;
-            Vector3 positionOffset = Vector3.right * (Agents.IndexOf(agent) - Agents.Count / 2f)
-                                                   * UnityEngine.Random.Range(9f, 10f);
+            
+            // Calculate a horizontal offset so that agents are spread out
+            Vector3 positionOffset = Vector3.forward * (Agents.IndexOf(agent) - Agents.Count / 2f)
+                                                   * 30f;
             
             // Set the aircraft position and rotation
             var agentTransform = agent.transform;

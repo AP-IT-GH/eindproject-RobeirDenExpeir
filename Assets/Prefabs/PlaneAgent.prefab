@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7946679969242997178}
   m_Layer: 0
   m_Name: propeller_y
-  m_TagString: Untagged
+  m_TagString: Racer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 2440239873902033848}
   m_Layer: 0
   m_Name: right_wheel_y
-  m_TagString: Untagged
+  m_TagString: Racer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 4322872783410543970}
   m_Layer: 0
   m_Name: rear_wheel_y
-  m_TagString: Untagged
+  m_TagString: Racer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 3715181318644245626}
   m_Layer: 0
   m_Name: light_plane_yellow
-  m_TagString: Untagged
+  m_TagString: Racer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 40658458218264717}
   m_Layer: 0
   m_Name: PlaneAgent
-  m_TagString: Untagged
+  m_TagString: Racer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 7469711340946756825}
   m_Layer: 0
   m_Name: left_wheel_y
-  m_TagString: Untagged
+  m_TagString: Racer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
